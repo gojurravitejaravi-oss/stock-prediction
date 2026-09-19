@@ -1,24 +1,27 @@
+import os
+os.environ["TF_USE_LEGACY_KERAS"] = "1"
+
 import streamlit as st
 import yfinance as yf
 import pandas as pd
 import numpy as np
+import tf_keras  # use legacy keras
+from tf_keras.models import load_model
 from sklearn.preprocessing import MinMaxScaler
 import plotly.graph_objects as go
-from tensorflow.keras.models import load_model
+
+@st.cache_resource
+def load_bilstm():
+    model = tf_keras.models.load_model("bilstm_7day.h5", compile=False)
+    return model
+
+model = load_bilstm()
 
 st.set_page_config(page_title="Stock Prediction Bi-LSTM", layout="wide")
 st.title("📈 Stock Price Prediction - Bi-LSTM (7-Day)")
 
 
-import streamlit as st
-from tensorflow.keras.models import load_model
 
-@st.cache_resource
-def load_bilstm():
-    model = load_model("bilstm_7day.h5", compile=False)
-    return model
-
-model = load_bilstm()
 st.success(f"Model Loaded: {model.input_shape}")
 
 ticker = st.text_input("Enter Stock Ticker (e.g., RELIANCE.NS, TCS.NS, AAPL)", "RELIANCE.NS")
