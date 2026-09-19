@@ -10,6 +10,9 @@ st.set_page_config(page_title="Stock Prediction Bi-LSTM", layout="wide")
 st.title("📈 Stock Price Prediction - Bi-LSTM (7-Day)")
 
 
+import streamlit as st
+from tensorflow.keras.models import load_model
+
 @st.cache_resource
 def load_bilstm():
     model = load_model("bilstm_7day.h5", compile=False)
