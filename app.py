@@ -9,9 +9,10 @@ from tensorflow.keras.models import load_model
 st.set_page_config(page_title="Stock Prediction Bi-LSTM", layout="wide")
 st.title("📈 Stock Price Prediction - Bi-LSTM (7-Day)")
 
+
 @st.cache_resource
 def load_bilstm():
-    model = load_model("bilstm_7day.h5")
+    model = load_model("bilstm_7day.h5", compile=False)
     return model
 
 model = load_bilstm()
