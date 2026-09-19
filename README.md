@@ -8,7 +8,7 @@ A Deep Learning project to predict next 7 days stock prices using Bidirectional 
 |------|-------------|
 | `bilstm_7day.h5` | Trained Bi-LSTM model (Input shape: 60, 3) |
 | `dlphase3.ipynb` | Model training notebook |
-| `final_app.py` | Streamlit web app |
+| `app.py` | Streamlit web app |
 | `requirements.txt` | Dependencies |
 
 ### 🧠 Model Details
